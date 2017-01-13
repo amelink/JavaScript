@@ -1,17 +1,173 @@
-Calculate average
-Write function avg which calaculates average of numbers in given list.
+// vocabulary digit = chiffre, vector = array
 
-function find_average(array) {
-  // your code here
-  var sum = 0;
-  for (i=0 ; i<array.length ; i++) {
-    sum += array[i];
+ES6 string addition ECMAScript 6
+
+It is easy to join two strings together like this string1 + string2.
+Another way to get the desired result would be with string1.concat(string2)
+ES6 has introduced another way of joining strings. Your task is to find out what this is and write a function that will add two strings together, there must be a space between the two strings.
++ , .concat() & .join() will not be allowed in this exercise. I have also removed some other methods that can be used to cheat!
+If one of the arguments is a number your code must coerce it into being a string.
+
+// Solution
+function joinStrings(string1, string2) {
+    return `${string1} ${string2}`
+}
+
+tous foncitonne ensemble
+backquot = `` sert à préciser quil ya un mélange de type de variable (boolean, string, number)
+${} sert a concatainer tous les type de variables
+
+
+
+
+
+Exclamation marks series #1: Remove a exclamation mark from the end of string
+
+Remove a exclamation mark from the end of string.
+For a beginner kata, you can assume that the input data is always a string, no need to verify it.
+//solution
+function remove(s){
+  if (s.charAt(s.length - 1) === '!') {
+    var result = s.substr(0, s.length - 1);
+    return result;
   }
-  var average = sum / array.length;
-  return average;
+  return s;
+}
+
+//autre solution
+function remove(s){
+  var result =  s.replace(/(.*)\!$/,'$1');
+// * pour les répétitions consécutive ou prend en comptes tous les caractères $ veut dire la fin d'une chaine
+  return result
 }
 
 
+
+Exclamation marks series #2: Remove all exclamation marks from the end of sentence
+
+Remove all exclamation marks from the end of sentence.
+function remove(s){
+  var result =  s.replace(/(.*?)\!*$/,'$1');
+// ? permet au code prioriser les autres "*" plutot que de laisser le premier tout manger
+  return result
+}
+
+
+
+Exclamation marks series #4: Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string
+
+Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string.
+For a beginner kata, you can assume that the input data is always a non empty string, no need to verify it.
+function remove(s){
+  var result =  s.replace(/\!/g,'');
+// g va effectuer tous les remplacements nécessaires
+  result += '!';
+  console.log(result);
+  return result;
+}
+
+
+
+Exclamation marks series #6: Remove n exclamation marks in the sentence from left to right
+
+Remove n exclamation marks in the sentence from left to right. n is positive integer.
+// solution
+function removefirst (str) {
+  var result = str.replace(/\!/,'');
+  return result
+  console.log(result)
+}
+
+function remove(s,n){
+var result = s;
+  for ( var i = 0 ; i < n ; i++) {
+    result = removefirst(result)
+  }
+  console.log({s, result});
+  return result;
+}
+
+// autre solution
+function remove(s,n){
+var result = s;
+  for ( var i = 0 ; i < n ; i++) {
+    result = result.replace(/\!/,'') // \ permet de specifier qu'il ne s'agit pas de (! = différent) mais juste "!"
+  }
+  console.log({s, result});
+  return result;
+}
+
+
+
+Exclamation marks series #11: Replace all vowel to exclamation mark in the sentence
+
+Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
+//solution
+function replace(s){
+    var result = s.replace(/[aeiou]/gi,'!') // les crochets indiquent que seul un des caractères doit matcher
+// entre crochet, on peut  spécifier des « ranges » par ex: [0-9] match avec les chiffres de 0 à 9 [a-Z] match l’alphabet, je crois
+// i permet de reconnaitre les majuscules et les minuscules
+    console.log({s,result})
+    return result
+}
+
+// autre solution
+function replaceVoyelle(str) {
+  var result1 =
+      str.replace(/a/gi,'!') // i permet de reconnaitre les majuscules et minuscule
+      .replace(/e/gi,'!')
+      .replace(/i/gi,'!')
+      .replace(/o/gi,'!')
+      .replace(/u/gi,'!');
+  console.log(result1)
+  return result1
+}
+
+function replace(s){
+var result = replaceVoyelle(s);
+   console.log(result)
+  return result;
+}
+
+// autre solution
+function replaceVoyelle(str) {
+  var result1 = str.replace(/a|e|i|o|u/gi,'!'); // | baton droit permette de dire "ou"
+  console.log(result1)
+  return result1
+}
+
+function replace(s){
+var result = replaceVoyelle(s);
+   console.log(result)
+  return result;
+}
+
+
+
+Fake Binary
+
+Given a string of numbers, you should replace any number below 5 with '0' and any number 5 and above with '1'.
+Return the resulting string.
+// Solution
+function fakeBin(x) {
+     var result = x.replace(/[01234]/g,'0'),
+     .replace(/[56789]/g,'1');
+     return result;
+}
+
+
+
+
+
+Keep Hydrated!
+
+Nathan loves cycling.
+Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+You get given the time and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+//Solution
+function litres(time) {
+  return Math.floor(time/2);
+}
 
 
 
@@ -32,6 +188,189 @@ function dutyFree(normPrice, discount, hol){
   var calcul = hol / (discount / 100);
   var result = calcul / normPrice;
   return Math.floor(result);
+}
+
+
+
+Jennys secret message
+
+Jenny has written a function that returns a greeting for a user.
+However, she's in love with Johnny, and would like to greet him slightly different.
+She added a special case to her function, but she made a mistake.
+Can you help her?
+
+//solution
+function greet(name){
+    var greeting = "Hello, " + name + "!";
+    if(name === "Johnny") {
+        return "Hello, my love!"
+    };
+    return greeting;
+}
+
+
+
+Volume of a Cuboid
+
+Bob needs a fast way to calculate the volume of a cuboid with three values:
+length, width and the height of the cuboid. Write a function to help Bob with this calculation.
+
+// Solution
+var Kata;
+
+Kata = (function() {
+  function Kata() {}
+
+  Kata.getVolumeOfCuboid = function(length, width, height) {
+      var volume = length * width * height;
+      return volume
+  };
+
+  return Kata;
+
+})();
+
+
+
+How many lightsabers do you own?
+
+Inspired by the development team at Vooza,
+write the function howManyLightsabersDoYouOwn that accepts the name of a programmer, and
+returns the number of lightsabers owned by that person.
+The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.
+
+function howManyLightsabersDoYouOwn(name) {
+    result = 0;
+    if (name === 'Zach') {
+        result = 18;
+        return result;
+    }
+    result = 0;
+    return result;
+}
+
+// autre Solution
+function howManyLightsabersDoYouOwn(name) {
+    if (name == null) {
+        return result = 0
+    } else if (name === 'Zach') {
+        result = 18;
+        return result
+    }
+    result = 0;
+    console.log({name,result})
+    return result;
+}
+
+
+
+Basic Mathematical Operations
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation.
+// solution
+function basicOp(operation, value1, value2) {
+    var result = "";
+    if (operation === '+') {
+        result = value1 + value2
+    } else if (operation === '-') {
+        result = value1 - value2
+    } else if (operation === '/') {
+        result = value1 / value2
+    } else if (operation === '*') {
+        result = value1 * value2
+    }
+    return result
+}
+// autre solution
+function basicOp(operation, value1, value2) {
+  return eval(value1 + operation + value2);
+}
+
+
+
+Convert a string to an array
+
+Write a function to split a string and convert it into an array of words.
+e.g.
+string_to_array("Robin Singh") => ["Robin", "Singh"]
+string_to_array("I love arrays they are my favorite") => ["I", "love", "arrays", "they", "are", "my", "favorite"]
+
+// Solution
+function stringToArray(string){
+    var array = string.split(" "); // split(" ") sépare les eléments d'un string (le séparateur est espace ) et met dans une tableau
+    return array
+}
+
+
+
+Fix the function
+//exo
+function addFive(num) {
+  var total = num + 5
+  return num
+}
+
+//Solution
+function addFive(num) {
+  var total = num + 5
+  return total
+}
+
+
+
+For UFC Fans (Total Beginners): Conor McGregor vs George Saint Pierre
+
+If the winner is George Saint Pierre he will obviously say: - "I am not impressed by your performance."
+If the winner is Conor McGregor he will most undoubtedly say: - "I'd like to take this chance to apologize.. To absolutely NOBODY!"
+// Solution
+var quote = function(fighter) {
+    var winner = fighter.toLowerCase();
+    if (winner === 'george saint pierre'){
+        return "I am not impressed by your performance."
+    } return "I'd like to take this chance to apologize.. To absolutely NOBODY!"
+};
+
+
+
+Simple multiplication
+
+This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
+// Solution
+function simpleMultiplication(n){
+    if (n%2 === 0) {
+        return n * 8;
+    } return n * 9;
+}
+simpleMultiplication(4)
+
+
+
+BASIC: Making Six Toast.
+//Solution
+function sixToast(num) {
+    if (num !== 6) {
+        return Math.abs(num - 6)
+    }
+    return 0
+}
+
+
+
+
+
+Calculate average
+
+Write function avg which calaculates average of numbers in given list.
+//solution
+function find_average(array) {
+  // your code here
+  var sum = 0;
+  for (i=0 ; i<array.length ; i++) {
+    sum += array[i];
+  }
+  var average = sum / array.length;
+  return average;
 }
 
 
@@ -103,6 +442,24 @@ function howMuchILoveYou(nbPetals) {
 
 
 
+Duck Duck Goose
+
+The objective of 'Duck, duck, goose' is to walk in a circle, tapping on each players head until one is finally chosen.
+Task: Given an array of Player objects (an array of associative arrays in PHP) and an index (1-based),
+return the name of the chosen Player.
+Example:
+duck_duck_goose([a, b, c, d], 1) should return a.name
+duck_duck_goose([a, b, c, d], 5) should return a.name
+duck_duck_goose([a, b, c, d], 4) should return d.name
+
+// Solution
+function duckDuckGoose(players, goose) {
+   return players[(goose-1)%players.length].name;
+}
+
+
+
+
 They say that only the name is long enough to attract attention.
 
 Task
@@ -143,108 +500,6 @@ function isOpposite(s1,s2){
 
 
 
-Exclamation marks series #1: Remove a exclamation mark from the end of string
-
-Remove a exclamation mark from the end of string.
-For a beginner kata, you can assume that the input data is always a string, no need to verify it.
-//solution
-function remove(s){
-  if (s.charAt(s.length - 1) === '!') {
-    var result = s.substr(0, s.length - 1);
-    return result;
-  }
-  return s;
-}
-
-//autre solution
-function remove(s){
-  var result =  s.replace(/(.*)\!$/,'$1');
-// * pour les répétitions consécutive
-  return result
-}
-
-
-
-
-
-Exclamation marks series #2: Remove all exclamation marks from the end of sentence
-
-Remove all exclamation marks from the end of sentence.
-function remove(s){
-  var result =  s.replace(/(.*?)\!*$/,'$1');
-// ? permet au code prioriser les autres "*" plutot que de laisser le premier tout manger
-  return result
-}
-
-
-
-
-Exclamation marks series #4: Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string
-
-Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string.
-For a beginner kata, you can assume that the input data is always a non empty string, no need to verify it.
-function remove(s){
-  var result =  s.replace(/\!/g,'');
-// g va effectuer tous les remplacements nécessaires
-  result += '!';
-  console.log(result);
-  return result;
-}
-
-
-
-
-
-Exclamation marks series #6: Remove n exclamation marks in the sentence from left to right
-
-Remove n exclamation marks in the sentence from left to right. n is positive integer.
-// solution
-function removefirst (str) {
-  var result = str.replace(/\!/,'');
-  return result
-  console.log(result)
-}
-
-function remove(s,n){
-var result = s;
-  for ( var i = 0 ; i < n ; i++) {
-    result = removefirst(result)
-  }
-  console.log({s, result});
-  return result;
-}
-
-// autre solution
-function remove(s,n){
-var result = s;
-  for ( var i = 0 ; i < n ; i++) {
-    result = result.replace(/\!/,'')
-  }
-  console.log({s, result});
-  return result;
-}
-
-
-
-
-Jennys secret message
-
-Jenny has written a function that returns a greeting for a user.
-However, she's in love with Johnny, and would like to greet him slightly different.
-She added a special case to her function, but she made a mistake.
-Can you help her?
-
-//solution
-function greet(name){
-    var greeting = "Hello, " + name + "!";
-    if(name === "Johnny") {
-        return "Hello, my love!"
-    };
-    return greeting;
-}
-
-
-
 
 Count of positives / sum of negatives
 
@@ -276,51 +531,6 @@ function countPositivesSumNegatives(input) {
     return result;
 }
 
-
-
-
-Exclamation marks series #11: Replace all vowel to exclamation mark in the sentence
-
-Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
-//solution
-function replace(s){
-    var result = s.replace(/[aeiou]/gi,'!') // les crochets indiquent que seul un des caractères doit matcher
-// entre crochet, on peut  spécifier des « ranges » par ex: [0-9] match avec les chiffres de 0 à 9 [a-Z] match l’alphabet, je crois
-// i permet de reconnaitre les majuscules et les minuscules
-    console.log({s,result})
-    return result
-}
-
-// autre solution
-function replaceVoyelle(str) {
-  var result1 =
-      str.replace(/a/gi,'!') // i permet de reconnaitre les majuscules et minuscule
-      .replace(/e/gi,'!')
-      .replace(/i/gi,'!')
-      .replace(/o/gi,'!')
-      .replace(/u/gi,'!');
-  console.log(result1)
-  return result1
-}
-
-function replace(s){
-var result = replaceVoyelle(s);
-   console.log(result)
-  return result;
-}
-
-// autre solution
-function replaceVoyelle(str) {
-  var result1 = str.replace(/a|e|i|o|u/gi,'!'); // | baton droit permette de dire "ou"
-  console.log(result1)
-  return result1
-}
-
-function replace(s){
-var result = replaceVoyelle(s);
-   console.log(result)
-  return result;
-}
 
 
 
@@ -382,124 +592,6 @@ function sumArray(array) {
 
 
 
-Volume of a Cuboid
-
-Bob needs a fast way to calculate the volume of a cuboid with three values:
-length, width and the height of the cuboid. Write a function to help Bob with this calculation.
-
-// Solution
-var Kata;
-
-Kata = (function() {
-  function Kata() {}
-
-  Kata.getVolumeOfCuboid = function(length, width, height) {
-      var volume = length * width * height;
-      return volume
-  };
-
-  return Kata;
-
-})();
-
-
-
-
-
-
-Basic Mathematical Operations
-
-The function should take three arguments - operation(string/char), value1(number), value2(number).
-The function should return result of numbers after applying the chosen operation.
-// solution
-function basicOp(operation, value1, value2) {
-    var result = "";
-    if (operation === '+') {
-        result = value1 + value2
-    } else if (operation === '-') {
-        result = value1 - value2
-    } else if (operation === '/') {
-        result = value1 / value2
-    } else if (operation === '*') {
-        result = value1 * value2
-    }
-    return result
-}
-// autre solution
-function basicOp(operation, value1, value2) {
-  return eval(value1 + operation + value2);
-}
-
-
-
-
-
-How many lightsabers do you own?
-
-Inspired by the development team at Vooza,
-write the function howManyLightsabersDoYouOwn that accepts the name of a programmer, and
-returns the number of lightsabers owned by that person.
-The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.
-
-function howManyLightsabersDoYouOwn(name) {
-    result = 0;
-    if (name === 'Zach') {
-        result = 18;
-        return result;
-    }
-    result = 0;
-    return result;
-}
-
-// autre Solution
-function howManyLightsabersDoYouOwn(name) {
-    if (name == null) {
-        return result = 0
-    } else if (name === 'Zach') {
-        result = 18;
-        return result
-    }
-    result = 0;
-    console.log({name,result})
-    return result;
-}
-
-
-
-
-
-
-Fake Binary
-
-Given a string of numbers, you should replace any number below 5 with '0' and any number 5 and above with '1'.
-Return the resulting string.
-// Solution
-function fakeBin(x) {
-     var result = x.replace(/[01234]/g,'0'),
-     .replace(/[56789]/g,'1');
-     return result;
-}
-
-
-
-
-
-Convert a string to an array
-
-Write a function to split a string and convert it into an array of words.
-e.g.
-string_to_array("Robin Singh") => ["Robin", "Singh"]
-
-string_to_array("I love arrays they are my favorite") => ["I", "love", "arrays", "they", "are", "my", "favorite"]
-
-// Solution
-function stringToArray(string){
-    var array = string.split(" "); // split(" ") sépare les eléments d'un string (le séparateur est espace ) et met dans une tableau
-    return array
-}
-
-
-
 
 Last
 
@@ -551,9 +643,6 @@ function reverse(string){
 
 
 
-digit = chiffre, vector = array
-
-
 
 
 Convert number to reversed array of digits = chiffre
@@ -573,76 +662,19 @@ function digitize(n) {
 
 
 
-ES6 string addition ECMAScript 6
+Remove First and Last Character
 
-It is easy to join two strings together like this string1 + string2.
-Another way to get the desired result would be with string1.concat(string2)
-ES6 has introduced another way of joining strings. Your task is to find out what this is and write a function that will add two strings together, there must be a space between the two strings.
-+ , .concat() & .join() will not be allowed in this exercise. I have also removed some other methods that can be used to cheat!
-If one of the arguments is a number your code must coerce it into being a string.
-
+Its pretty straightforward. Your goal is to create a function that removes the first and last characters of a string.
+You're given one parameter.
 // Solution
-function joinStrings(string1, string2) {
-    return `${string1} ${string2}`
-}
-
-tous foncitonne ensemble
-backquot = `` sert à préciser quil ya un mélange de type de variable (boolean, string, number)
-${} sert a concatainer tous les type de variables
-
-
-
-
-Fix the function
-//exo
-function addFive(num) {
-  var total = num + 5
-  return num
-}
-
-//Solution
-function addFive(num) {
-  var total = num + 5
-  return total
-}
-
-
-
-
-For UFC Fans (Total Beginners): Conor McGregor vs George Saint Pierre
-
-If the winner is George Saint Pierre he will obviously say: - "I am not impressed by your performance."
-If the winner is Conor McGregor he will most undoubtedly say: - "I'd like to take this chance to apologize.. To absolutely NOBODY!"
-// Solution
-var quote = function(fighter) {
-    var winner = fighter.toLowerCase();
-    if (winner === 'george saint pierre'){
-        return "I am not impressed by your performance."
-    } return "I'd like to take this chance to apologize.. To absolutely NOBODY!"
+function removeChar(str){
+    var result = str.substring(1,str.length-1) // .substring(a,b) a et b sont execlus
+    console.log({str,result})
+    return result
 };
-
-
-
-Simple multiplication
-
-This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
-// Solution
-function simpleMultiplication(n){
-    if (n%2 === 0) {
-        return n * 8;
-    } return n * 9;
-}
-simpleMultiplication(4)
-
-
-
-
-
-BASIC: Making Six Toast.
-//Solution
-function sixToast(num) {
-    if (num !== 6) {
-        return Math.abs(num - 6)
-    }
-    return 0
-}
+// Autre solution
+function removeChar(str){
+    var result = str.slice(1,-1) // positif de gauche à droite / négatif de droite à gauche
+    console.log({str,result})
+    return result
+};
